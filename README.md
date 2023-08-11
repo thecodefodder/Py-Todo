@@ -1,4 +1,4 @@
-# Gitty
+# Gitty - I was going to make a git tool first but then went with this.
 
 ## What is it?
 
