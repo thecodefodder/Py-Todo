@@ -1,5 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLineEdit, QPushButton, QListWidget, QListWidgetItem
+from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLineEdit, QPushButton, QListWidget
+from utils import add_task_to_list, remove_task_from_list
 
 
 class TodoApp(QMainWindow):
@@ -57,16 +58,11 @@ class TodoApp(QMainWindow):
 
     def add_task(self):
         task_text = self.task_input.text()
-        if task_text:
-            item = QListWidgetItem(task_text)
-            self.task_list.addItem(item)
-            self.task_input.clear()
+        add_task_to_list(self.task_list, task_text)
+        self.task_input.clear()
 
     def remove_task(self):
-        selected_tasks = self.task_list.selectedItems()
-        for task in selected_tasks:
-            row = self.task_list.row(task)
-            self.task_list.takeItem(row)
+        remove_task_from_list(self.task_list)
 
 
 if __name__ == "__main__":
